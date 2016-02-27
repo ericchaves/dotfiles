@@ -14,7 +14,7 @@
 (set-face-attribute 'default nil :height 90)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-enter") 'text-scale-adjust)
+(global-set-key (kbd "C-=") 'text-scale-adjust)
 ;; flahs bell
 (setq visible-bell 1)
 
