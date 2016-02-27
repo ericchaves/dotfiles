@@ -41,6 +41,7 @@
 (let ((need-refresh nil))
   (dolist (pkg '(use-package
                  better-defaults
+		 fontawesome
                  zenburn-theme
                  rainbow-delimiters
                  helm
