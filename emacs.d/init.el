@@ -1,8 +1,17 @@
 ;;; init.el --- Where all the magic begins
 
+(require 'cl)
+
 (setq user-full-name "Eric Chaves"
       user-mail-address "eric@craftti.com.br")
+;; encoding - Set preferred encoding system as UTF-8
+(prefer-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
 
+;; some custom preferences
 ;(setq debug-on-error t)
 (setq inhibit-startup-screen t)
 (setq vc-follow-symlinks t)
@@ -18,8 +27,10 @@
 ;; flahs bell
 (setq visible-bell 1)
 
+;; set paths and backups
 ;; config dir holds all my-<package>.el files
 (add-to-list 'load-path "~/.emacs.d/config/")
+(add-to-list 'load-path "~/.emacs.d/vendor/")
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq delete-old-versions -1)
 (setq version-control t)
@@ -40,15 +51,18 @@
 ;; by convention setup-<package>.el will ensure package is installed using use-package
 (let ((need-refresh nil))
   (dolist (pkg '(use-package
-                 better-defaults
-		 fontawesome
-                 zenburn-theme
-                 rainbow-delimiters
-                 helm
-                 guide-key
-                 projectile
-                 company
-                 magit))
+                  ack-and-a-half
+                  move-text
+                  better-defaults
+                  fontawesome
+                  zenburn-theme
+                  rainbow-delimiters
+                  helm
+                  guide-key
+                  projectile
+                  company
+                  markdown-mode
+                  magit))
     (unless (require (intern (concat "my-" (symbol-name pkg))) nil 'noerror)
       (message "my-%s not found" pkg)
       (unless (package-installed-p pkg)
