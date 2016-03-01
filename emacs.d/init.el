@@ -38,9 +38,11 @@
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
+;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
 
 (package-initialize)
 (setq url-http-attempt-keepalives nil)
@@ -51,7 +53,8 @@
 ;; by convention setup-<package>.el will ensure package is installed using use-package
 (let ((need-refresh nil))
   (dolist (pkg '(use-package
-                  ack-and-a-half
+                  smartparens
+                  yasnippet
                   move-text
                   better-defaults
                   fontawesome
@@ -62,6 +65,8 @@
                   projectile
                   company
                   markdown-mode
+                  web-mode
+                  js2-mode
                   magit))
     (unless (require (intern (concat "my-" (symbol-name pkg))) nil 'noerror)
       (message "my-%s not found" pkg)
