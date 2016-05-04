@@ -1,6 +1,3 @@
-[submodule "yasnippet-snippets"]
-	path = yasnippet-snippets
-	url = git@github.com:AndreaCrotti/yasnippet-snippets.git
-[submodule "emacs.d/snippets"]
-	path = emacs.d/snippets
+[submodule "emacs.d/yasnippets"]
+	path = emacs.d/yasnippets
 	url = git@github.com:AndreaCrotti/yasnippet-snippets.git

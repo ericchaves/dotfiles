@@ -12,6 +12,7 @@ backups
 places
 ido.last
 /url/
+*.dat
 
 # Org-mode
 .org-id-locations
