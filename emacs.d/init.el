@@ -53,6 +53,7 @@
 ;; by convention setup-<package>.el will ensure package is installed using use-package
 (let ((need-refresh nil))
   (dolist (pkg '(use-package
+ 		  window-numbering
                   smartparens
                   yasnippet
                   move-text
@@ -67,6 +68,7 @@
                   markdown-mode
                   web-mode
                   js2-mode
+                  jade-mode
                   magit))
     (unless (require (intern (concat "my-" (symbol-name pkg))) nil 'noerror)
       (message "my-%s not found" pkg)
