@@ -53,7 +53,6 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F1 exec emacs
 bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
@@ -256,7 +255,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	status_command i3status -c ~/.i3/i3status.conf
+	status_command i3status
 #	wheel_up_cmd nop
 #	wheel_down_cmd nop
 	font pango:Cantarell,Icons 9
