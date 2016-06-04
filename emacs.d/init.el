@@ -1,84 +1,162 @@
-;;; init.el --- Where all the magic begins
+;;;;
+;; Packages
+;;;;
 
-(require 'cl)
-
-(setq user-full-name "Eric Chaves"
-      user-mail-address "eric@craftti.com.br")
-;; encoding - Set preferred encoding system as UTF-8
-(prefer-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-
-;; some custom preferences
-;(setq debug-on-error t)
-(setq inhibit-startup-screen t)
-(setq vc-follow-symlinks t)
-;; copy and paste
-(setq x-select-enable-clipboard t)
-(setq x-select-enable-primary t)
-(setq mouse-drag-copy-region t)
-;; set font size in 1/100 (ie 100 = 10pts) and enable zooming
-(set-face-attribute 'default nil :height 90)
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-=") 'text-scale-adjust)
-;; flahs bell
-(setq visible-bell 1)
-
-;; set paths and backups
-;; config dir holds all my-<package>.el files
-(add-to-list 'load-path "~/.emacs.d/config/")
-(add-to-list 'load-path "~/.emacs.d/vendor/")
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq delete-old-versions -1)
-(setq version-control t)
-(setq vc-make-backup-files t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
-
+;; Define package repositories
 (require 'package)
-(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
-;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+(setq package-pinned-packages '((cider              . "melpa-stable")
+				(helm               . "melpa-stable")
+				(helm-core          . "melpa-stable")
+				(smex               . "melpa-stable")
+				(zenburn-theme      . "melpa-stable")
+				(anti-zenburn-theme . "melpa-stable")
+				(cider              . "melpa-stable")
+				(clojure-mode       . "melpa-stable")
+				(rainbow-delimiters . "melpa-stable")))
 
 
+
+;; Load and activate emacs packages. Do this first so that the
+;; packages are loaded before you start trying to modify them.
+;; This also sets the load path.
 (package-initialize)
 (setq url-http-attempt-keepalives nil)
 
+;; Download the ELPA archive description if needed.
+;; This informs Emacs about the latest versions of all packages, and
+;; makes them available for download.
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-;; define list of packages to load.
-;; will try to require setup-<package> otherwise will just install/require <package>
-;; by convention setup-<package>.el will ensure package is installed using use-package
-(let ((need-refresh nil))
-  (dolist (pkg '(use-package
- 		  window-numbering
-                  smartparens
-                  yasnippet
-                  move-text
-                  better-defaults
-                  fontawesome
-                  zenburn-theme
-                  rainbow-delimiters
-                  helm
-                  guide-key
-                  projectile
-                  company
-                  markdown-mode
-                  web-mode
-                  js2-mode
-                  jade-mode
-                  magit))
-    (unless (require (intern (concat "my-" (symbol-name pkg))) nil 'noerror)
-      (message "my-%s not found" pkg)
-      (unless (package-installed-p pkg)
-        (message "installing %s" pkg)
-        (unless need-refresh
-          (package-refresh-contents)
-          (set 'need-refresh t))
-        (package-install pkg))
-      (require pkg))))
+;; The packages you want installed. You can also install these
+;; manually with M-x package-install
+;; Add in your own as you wish:
+(defvar my-packages
+  '(;; makes handling lisp expressions much, much easier
+    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
+    paredit
+
+    ;; key bindings and code colorization for Clojure
+    ;; https://github.com/clojure-emacs/clojure-mode
+    clojure-mode
+
+    ;; extra syntax highlighting for clojure
+    clojure-mode-extra-font-locking
+
+    ;; integration with a Clojure REPL
+    ;; https://github.com/clojure-emacs/cider
+    cider
+
+    ;; Enhances M-x to allow easier execution of commands. Provides
+    ;; a filterable list of possible commands in the minibuffer
+    ;; http://www.emacswiki.org/emacs/Smex
+    smex
+
+    ;; jade templates
+    ;jade-mode
+
+    ;; async package loading
+    async
+
+    ;; fuzzy autocomplete
+    helm
+
+    ;; project navigation
+    projectile
+    helm-projectile
+    
+    ;; colorful parenthesis matching
+    rainbow-delimiters
+
+    ;; edit html tags like sexps
+    tagedit
+
+    ;; git integration
+    magit))
+
+;; On OS X, an Emacs instance started from the graphical user
+;; interface will have a different environment than a shell in a
+;; terminal window, because OS X does not run a shell during the
+;; login. Obviously this will lead to unexpected results when
+;; calling external utilities like make from Emacs.
+;; This library works around this problem by copying important
+;; environment variables from the user's shell.
+;; https://github.com/purcell/exec-path-from-shell
+(if (eq system-type 'darwin)
+    (add-to-list 'my-packages 'exec-path-from-shell))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 
-(global-set-key (kbd "C-z") 'undo)
+;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
+;; to load them.
+;;
+;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
+;; then you can add the following code to this file:
+;;
+;; (require 'yaml-mode)
+;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;; 
+;; Adding this code will make Emacs enter yaml mode whenever you open
+;; a .yml file
+(add-to-list 'load-path "~/.emacs.d/vendor")
+
+;;;;
+;; Customization
+;;;;
+
+;; Add a directory to our load path so that when you `load` things
+;; below, Emacs knows where to look for the corresponding file.
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; environment variables
+(load "shell-integration.el")
+
+;; These customizations make it easier for you to navigate files,
+;; switch buffers, and choose options from the minibuffer.
+(load "navigation.el")
+
+;; These customizations change the way emacs looks and disable/enable
+;; some user interface elements
+(load "ui.el")
+
+;; These customizations make editing a bit nicer.
+(load "editing.el")
+
+;; Hard-to-categorize customizations
+(load "misc.el")
+
+;; For editing lisps
+(load "elisp-editing.el")
+
+;; Langauage-specific
+(load "setup-clojure.el")
+(load "setup-js.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(custom-safe-themes
+   (quote
+    ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "68f7a53f5f1a8d30e5cd2d119fe6ecddb081bfe61bc427ca20eefd0abfada488" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
