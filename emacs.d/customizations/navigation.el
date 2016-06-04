@@ -31,8 +31,6 @@
       helm-M-x-requires-pattern nil
       helm-ff-skip-boring-files t)
 
-;; turn-off ido mode in case it was enable elsewhere
-(ido-mode -1)
 
 (global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "C-h a") 'helm-apropos)

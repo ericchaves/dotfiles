@@ -26,10 +26,10 @@
 ;; for a more technical explanation.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'tomorrow-night-bright t)
+(load-theme 'tomorrow-night-eighties t)
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 90)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
@@ -75,5 +75,14 @@
 (set-terminal-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 
-;; set font size in 1/100 (ie 100 = 10pts) and enable zooming
-(set-face-attribute 'default nil :height 90)
+
+;; adjuste fringe and linum colors
+;(set-face-attribute 'fringe nil :background "#000")
+;(set-face-attribute 'linum nil :background "#000")
+
+
+;; adjust helm highlight color
+(set-face-attribute 'helm-selection nil 
+                    :background "#616B7F"
+                    :foreground "black")
+ 
