@@ -19,36 +19,33 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
+;;helm mde uses fuzzy search to navigate choices.
+(require 'helm-config)
+(require 'helm)
+(helm-mode 1)
+(setq helm-candidate-number-limit 100) ;; From https://gist.github.com/antifuchs/9238468
+(setq helm-idle-delay 0.0              ; update fast sources immediately (doesn't).
+      helm-input-idle-delay 0.01       ; this actually updates thing reeeelatively quickly.
+      helm-yas-display-key-on-candidate t
+      helm-quick-update t
+      helm-M-x-requires-pattern nil
+      helm-ff-skip-boring-files t)
 
-;; ido-mode allows you to more easily navigate choices. For example,
-;; when you want to switch buffers, ido presents you with a list
-;; of buffers in the the mini-buffer. As you start to type a buffer's
-;; name, ido will narrow down the list of buffers to match the text
-;; you've typed in
-;; http://www.emacswiki.org/emacs/InteractivelyDoThings
-(ido-mode t)
+;; turn-off ido mode in case it was enable elsewhere
+(ido-mode -1)
 
-;; This allows partial matches, e.g. "tl" will match "Tyrion Lannister"
-(setq ido-enable-flex-matching t)
-
-;; Turn this behavior off because it's annoying
-(setq ido-use-filename-at-point nil)
-
-;; Don't try to match file across all "work" directories; only match files
-;; in the current directory displayed in the minibuffer
-(setq ido-auto-merge-work-directories-length -1)
-
-;; Includes buffer names of recently open files, even if they're not
-;; open now
-(setq ido-use-virtual-buffers t)
-
-;; This enables ido in all contexts where it could be useful, not just
-;; for selecting buffer and file names
-(ido-ubiquitous-mode 1)
-
-;; Shows a list of buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
+(global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x c o") 'helm-occur)
+(global-set-key (kbd "C-x c s") 'helm-swoop)
+(global-set-key (kbd "C-x c y") 'helm-yas-complete)
+(global-set-key (kbd "C-x c Y") 'helm-yas-create-snippet-on-region)
+(global-set-key (kbd "C-x c b") 'my/helm-do-grep-book-notes)
+(global-set-key (kbd "C-x c SPC") 'helm-all-mark-rings)
 
 ;; Enhances M-x to allow easier execution of commands. Provides
 ;; a filterable list of possible commands in the minibuffer
@@ -59,3 +56,18 @@
 
 ;; projectile everywhere!
 (projectile-global-mode)
+(setq projectile-keymap-prefix (kbd "C-c p"))
+;(setq projectile-enable-caching t)
+;(setq projectile-indexing-method 'alien)
+(add-to-list 'projectile-globally-ignored-files "node-modules")
+(projectile-global-mode)
+(require 'helm-projectile)
+(helm-projectile-on)
+(setq projectile-switch-project-action 'projectile-dired)
+(setq projectile-completion-system 'helm)
+;; move-text
+;(require 'move-text)
+;(global-set-key [M-up] 'move-text-up)
+;(global-set-key [M-down] 'move-text-down)
+;TODO: find unbinded key. M-up/down in use by paredit
+

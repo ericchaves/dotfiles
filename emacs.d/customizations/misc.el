@@ -10,3 +10,8 @@
 
 ;; Go straight to scratch buffer on startup
 (setq inhibit-startup-message t)
+
+;; remap common keys
+(global-set-key (kbd "C-z") 'undo)
+;;(global-set-key [home] 'beginning-of-line)
+;;(global-set-key [end] 'end-of-line)

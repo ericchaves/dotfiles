@@ -4,27 +4,33 @@
 
 ;; Define package repositories
 (require 'package)
+
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
-(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(setq package-pinned-packages '((cider              . "melpa-stable")
+				(helm               . "melpa-stable")
+				(helm-core          . "melpa-stable")
+				(smex               . "melpa-stable")
+				(zenburn-theme      . "melpa-stable")
+				(anti-zenburn-theme . "melpa-stable")
+				(cider              . "melpa-stable")
+				(clojure-mode       . "melpa-stable")
+				(rainbow-delimiters . "melpa-stable")))
 
-
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                          ("melpa" . "http://melpa-stable.milkbox.net/packages/")))
 
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
 ;; This also sets the load path.
 (package-initialize)
+(setq url-http-attempt-keepalives nil)
 
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
@@ -61,9 +67,19 @@
     ;; http://www.emacswiki.org/emacs/Smex
     smex
 
+    ;; jade templates
+    ;jade-mode
+
+    ;; async package loading
+    async
+
+    ;; fuzzy autocomplete
+    helm
+
     ;; project navigation
     projectile
-
+    helm-projectile
+    
     ;; colorful parenthesis matching
     rainbow-delimiters
 
@@ -101,7 +117,6 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
-
 
 ;;;;
 ;; Customization
