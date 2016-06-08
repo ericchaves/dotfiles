@@ -22,6 +22,7 @@
 				(anti-zenburn-theme . "melpa-stable")
 				(cider              . "melpa-stable")
 				(clojure-mode       . "melpa-stable")
+				(aggressive-indent  . "melpa-stable")
 				(rainbow-delimiters . "melpa-stable")))
 
 
@@ -52,6 +53,9 @@
 
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
+    
+    ;;auto indent mode
+    aggressive-indent
 
     ;; integration with a Clojure REPL
     ;; https://github.com/clojure-emacs/cider
@@ -82,7 +86,12 @@
     tagedit
 
     ;; git integration
-    magit))
+    magit
+
+    ;; autocomplete
+    auto-complete
+    ac-nrepl
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a

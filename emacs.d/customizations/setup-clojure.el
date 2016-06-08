@@ -25,6 +25,10 @@
             (define-clojure-indent (fact 1))
             (define-clojure-indent (facts 1))))
 
+;; enabling auto indent
+(require 'aggressive-indent)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+
 ;;;;
 ;; Cider
 ;;;;

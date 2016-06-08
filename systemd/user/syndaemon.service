@@ -3,7 +3,10 @@ Description=syndaemon
 After=xorg.service
 
 [Service]
+Type=forking
+Environment=DISPLAY=:0
 ExecStart=/usr/bin/syndaemon -t -R -d -K -i 1
+Restart=always
 
 [Install]
 WantedBy=wm.target
