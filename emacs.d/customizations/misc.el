@@ -27,3 +27,7 @@
 (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
 (add-to-list 'ac-modes 'cider-mode)
 (add-to-list 'ac-modes 'cider-repl-mode)
+;; enable copy to clipboardg
+(setq x-select-enable-clipboard t)
+(setq mouse-drag-copy-region t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
