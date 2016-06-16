@@ -1,11 +1,19 @@
-((("mouse-drag-copy-region" .
+((("helm-projectile-find-file" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("helm-projectile" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("projectile-switch-project-action" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("projectile-switch-project" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("mouse-drag-copy-region" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("x-select-enable-primary" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("x-select-enable-clipboard" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("setq" .
-   [3 0 0 0])
+   [4 0 0 0])
   ("nil" .
    [1 0 0])
   ("def" .

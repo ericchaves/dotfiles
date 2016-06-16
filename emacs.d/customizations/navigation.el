@@ -21,7 +21,7 @@
 
 ;;helm mde uses fuzzy search to navigate choices.
 (require 'helm-config)
-(require 'helm)
+;;(require 'helm)
 (helm-mode 1)
 (setq helm-candidate-number-limit 100) ;; From https://gist.github.com/antifuchs/9238468
 (setq helm-idle-delay 0.0              ; update fast sources immediately (doesn't).
@@ -53,19 +53,19 @@
 (global-set-key (kbd "M-x") 'smex)
 
 ;; projectile everywhere!
+(require 'helm-projectile)
+(helm-projectile-on)
 (projectile-global-mode)
 (setq projectile-keymap-prefix (kbd "C-c p"))
 ;(setq projectile-enable-caching t)
 ;(setq projectile-indexing-method 'alien)
 (add-to-list 'projectile-globally-ignored-files "node-modules")
-(projectile-global-mode)
-(require 'helm-projectile)
-(helm-projectile-on)
-(setq projectile-switch-project-action 'projectile-dired)
+;(setq projectile-switch-project-action 'projectile-dired)
+(setq projectile-switch-project-action 'helm-projectile-find-file)
+(setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-completion-system 'helm)
 ;; move-text
 ;(require 'move-text)
 ;(global-set-key [M-up] 'move-text-up)
 ;(global-set-key [M-down] 'move-text-down)
 ;TODO: find unbinded key. M-up/down in use by paredit
-
