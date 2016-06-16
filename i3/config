@@ -59,7 +59,7 @@ set $dual_monitor "Dual monitor: [0]off [1]hdmi [2]vga"
 bindsym $mod+F10 mode $dual_monitor 
 mode $dual_monitor{
   bindsym 1 exec "xrandr --output HDMI1 --auto --left-of eDP1 -s 1366x768 --primary"
-  bindsym 2 exec "xrandr --output DP1 --auto --left-of eDP1 -s 1366x768 --primary"
+  bindsym 2 exec "xrandr --output DP1   --auto --left-of eDP1 -s 1366x768 --primary"
   bindsym 0 exec "xrandr --output DP1 --off --output HDMI1 --off --output eDP1 -s 1366x768 --primary"
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -68,7 +68,8 @@ mode $dual_monitor{
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+F2 exec urxvt -e bash -c "emacsclient -t -a ''"
+#bindsym $mod+F2 exec urxvt -e bash -c "emacsclient -t -a ''"
+bindsym $mod+F2 exec emacs
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -293,7 +294,7 @@ bar {
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
-#	tray_output eDP1
+	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop

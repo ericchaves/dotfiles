@@ -3,6 +3,7 @@
 ;;;;
 
 ;; Define package repositories
+(require 'cl)
 (require 'package)
 
 (add-to-list 'package-archives

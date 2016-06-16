@@ -1,3 +1,13 @@
+;; set username
+(setq user-full-name "Eric Chaves"
+      user-mail-address "eric@craftti.com.br")
+;; encoding - Set preferred encoding system as UTF-8
+(prefer-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
