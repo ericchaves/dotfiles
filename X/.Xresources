@@ -1,153 +1,69 @@
-! {{{ Xft
-Xft.dpi:                        96
-Xft.antialias:			true
-Xft.hinting:			true
-Xft.rgba:                       rgba
-Xft.autohint:			true
-Xft.hintstyle:			hintslight
-Xft.lcdfilter:                  lcddefault
+*background:            #272827
+*foreground:            #657b83
+*fading:                15
+*fadeColor:             black
+*cursorColor:           #16A085
+*pointerColorBackground:#2B2C2B
+*pointerColorForeground:#16A085
+
+!! black dark/light
+*color0:                #282928
+*color8:                #272827
+
+!! red dark/light
+*color1:                #983133
+*color9:                #985F31
+
+!! green dark/light
+*color2:                #1D584D
+*color10:               #16A085
+
+!! yellow dark/light
+*color3:                #5CE022
+*color11:               #63B93D
+
+!! blue dark/light
+*color4:                #001B33
+*color12:               #839496
+
+!! cyan dark/light
+*color6:                #4F6A98
+*color14:               #2269E0
+
+!! white dark/light
+*color7:                #fdf6e3
+*color15:               #fdf6e3
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 Xcursor.theme: Chameleon-Pearl-Regular-0.5
-! }}}
+Xcursor.size:  0
 
-!Xft.dpi: 96
-!Xft.antialias: true
-!Xft.hinting: true
-!Xft.rgba: rgb
-!Xft.autohint: false
-!Xft.hintstyle: hintslight
-!Xft.lcdfilter: lcddefault
-!Xcursor.theme: Chameleon-Pearl-Regular-0.5
-!Xcursor.size:  0
+XTerm*background: #272827
+XTerm*foreground: #fdf6e3
+XTerm*reverseVideo: on
+XTerm*faceName: Terminus:size=11:antialias=true
+XTerm*selectToClipboard: true
 
-
-URxvt*font:                     xft:Cousine:pixelsize=11
-URxvt*boldFont:                 xft:Cousine:pixelsize=11:style=italic
-URxvt*background:		black
-URxvt*transparent:              true
-URxvt*tintColor:                white
-URxvt*shading:                  10
-URxvt*fading:			10
-URxvt*urlLauncher:              chromium
-URxvt*perl-ext:                 default,matcher
-URxvt*matcher.button:           1
-URxvt*matcher.pattern.1:        \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-URxvt*matcher.pattern.2:        \\B(/\\S+?):(\\d+)(?=:|$)
-!URxvt*inheritPixmap:                  true
-
-dmenu.foreground:               #222222
-dmenu.background:               #cacaca
-dmenu.selfforeground:           #dd4010
-dmenu.selfbackground:           #b04020
-
-*charClass:     33:48,37:48,61:48,63:48,58:48,45-47:48,38:48,126:48
-
-*jumpScroll: true
-*multiScroll: true
-*boldMode: false
-*scrollTtyKeypress: true
-*scrollBar: false
-*cutNewline: false
-*scrollTtyOutput: false
-*scrollKey: true
-*secondaryScroll: true
-*cursorBlink: true
-*dynamicColors: false
-*saveLines: 3000
-!*geometry: 110x50
-
-
-! {{{ XFontSel
-XFontSel*menu*showUnselectable: false
-XFontSel*MenuButton.shadowWidth: 0
-XFontsel*Toggle*ToggleStyle: check
-XFontsel*MenuButton*Justify:    left
-XFontsel*MenuButton*MenuButtonStyle: select
-.xfontsel.pane.commandBox.quitButton.background: #777777
-.xfontsel.pane.commandBox.quitButton.foreground: snow
-.xfontsel.pane.commandBox.ownButton.background: orange3
-.xfontsel.pane.commandBox.ownButton.foreground: snow
-.xfontsel.pane.commandBox.countLabel.background: snow
-.xfontsel.pane.viewPort.sampleText.background: #777777
-.xfontsel.pane.viewPort.sampleText.foreground: snow
-.xfontsel.pane.fieldBox.field0.background: #777777
-.xfontsel.pane.fieldBox.field0.foreground: snow
-.xfontsel.pane.fieldBox.field1.background: #777777
-.xfontsel.pane.fieldBox.field1.foreground: snow
-.xfontsel.pane.fieldBox.field2.background: #777777
-.xfontsel.pane.fieldBox.field2.foreground: snow
-.xfontsel.pane.fieldBox.field3.background: #777777
-.xfontsel.pane.fieldBox.field3.foreground: snow
-.xfontsel.pane.fieldBox.field4.background: #777777
-.xfontsel.pane.fieldBox.field4.foreground: snow
-.xfontsel.pane.fieldBox.field5.background: #777777
-.xfontsel.pane.fieldBox.field5.foreground: snow
-.xfontsel.pane.fieldBox.field6.background: #777777
-.xfontsel.pane.fieldBox.field6.foreground: snow
-.xfontsel.pane.fieldBox.field7.background: #777777
-.xfontsel.pane.fieldBox.field7.foreground: snow
-.xfontsel.pane.fieldBox.field8.background: #777777
-.xfontsel.pane.fieldBox.field8.foreground: snow
-.xfontsel.pane.fieldBox.field9.background: #777777
-.xfontsel.pane.fieldBox.field9.foreground: snow
-.xfontsel.pane.fieldBox.field10.background: #777777
-.xfontsel.pane.fieldBox.field10.foreground: snow
-.xfontsel.pane.fieldBox.field11.background: #777777
-.xfontsel.pane.fieldBox.field11.foreground: snow
-.xfontsel.pane.fieldBox.field12.background: #777777
-.xfontsel.pane.fieldBox.field12.foreground: snow
-.xfontsel.pane.fieldBox.field13.background: #777777
-.xfontsel.pane.fieldBox.field13.foreground: snow
-.xfontsel.pane.fieldBox*foreground: #000000
-.xfontsel.pane.fieldBox.MenuButton.borderWidth: 1
-.xfontsel.pane.fieldBox.MenuButton.internalHeight: 1
-.xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
-.xfontsel.pane.fieldBox.MenuButton.shapeStyle: rectangle
-! }}}
-
-! {{{ Colours
-*background:       #222222
-*foreground:       #cacaca
-!black
-*color0:           #080808
-*color8:           #505050
-!red
-*color1:           #b04020
-*color9:           #dd4010
-!green
-*color2:           #afd700
-*color10:          #daff30
-!yellow
-*color3:           #f7cf0a
-*color11:          #fce70d
-!blue
-*color4:           #3060aa
-*color12:          #6099dd
-!magenta
-*color5:           #d6156c
-*color13:          #fe4365
-!cyan
-*color6:           #a0c2de
-*color14:          #c9dee8
-!white
-*color7:           #808080
-*color15:          #b0b0b0
-!}}}
-
-
-!URxvt.font: 9x15
-!URxvt.depth: 32
-!URxvt.background: [62]#000000
-!URxvt*scrollBar:                      false
-!URxvt*mouseWheelScrollPage:           false
-!URxvt*cursorBlink:                    true
-!URxvt*background:                     black
-!URxvt*foreground:                     white
-!URxvt*saveLines:                      5000
+URxvt.font: 9x15
+URxvt.depth: 32
+URxvt.background: [80]#000000
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           false
+URxvt*cursorBlink:                    true
+URxvt*background:                     black
+URxvt*foreground:                     grey
+URxvt*saveLines:                      5000
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
-!URxvt*inheritPixmap:                  true
-!URxvt*transparent:                    true
-!URxvt*shading:                        138
+! URxvt*inheritPixmap:                  true
+! URxvt*transparent:                    true
+! URxvt*shading:                        138
 
 ! other possible settings:
 ! Rxvt.perl-ext-common: ...,clipboard
