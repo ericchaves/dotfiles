@@ -69,3 +69,13 @@
 ;(global-set-key [M-up] 'move-text-up)
 ;(global-set-key [M-down] 'move-text-down)
 ;TODO: find unbinded key. M-up/down in use by paredit
+
+;; Enable minor hide-show minor mode globally
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(setq-default hs-minor-mode t)
+(global-set-key (kbd "C-=") #'hs-toggle-hiding)
+(global-set-key (kbd "C-+") #'hs-show-all)
+(global-set-key (kbd "C-_") #'hs-hide-all)
+
+        (define-key map (kbd "C-c @ S")	  'hs-show-all)
+        (define-key map (kbd "C-c @ l")   'hs-hide-level)

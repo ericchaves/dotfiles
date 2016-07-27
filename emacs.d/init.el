@@ -6,26 +6,8 @@
 (require 'cl)
 (require 'package)
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-
-(setq package-pinned-packages '((cider              . "melpa-stable")
-				(helm               . "melpa-stable")
-				(helm-core          . "melpa-stable")
-				(smex               . "melpa-stable")
-				(zenburn-theme      . "melpa-stable")
-				(anti-zenburn-theme . "melpa-stable")
-				(cider              . "melpa-stable")
-				(clojure-mode       . "melpa-stable")
-				(aggressive-indent  . "melpa-stable")
-				(rainbow-delimiters . "melpa-stable")))
-
+ (add-to-list 'package-archives                                                 
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)         
 
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -67,10 +49,16 @@
     ;; http://www.emacswiki.org/emacs/Smex
     smex
 
+    ;;js2-mode
+    js2-mode
+    js2-refactor
+
     ;; jade templates
     ;jade-mode
     less-css-mode
 
+    ;; web-mode
+    web-mode
     ;; async package loading
     async
 
