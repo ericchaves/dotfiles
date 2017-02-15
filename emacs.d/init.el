@@ -6,8 +6,8 @@
 (require 'cl)
 (require 'package)
 
- (add-to-list 'package-archives                                                 
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)         
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)         
 
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -49,9 +49,17 @@
     ;; http://www.emacswiki.org/emacs/Smex
     smex
 
+    ;; terraform
+    terraform-mode
+
+    ;; platformio
+    platformio-mode
+
     ;;js2-mode
     js2-mode
     js2-refactor
+    yaml-mode
+    flymake-json
 
     ;; jade templates
     ;jade-mode
@@ -59,6 +67,7 @@
 
     ;; web-mode
     web-mode
+
     ;; async package loading
     async
 
@@ -68,7 +77,7 @@
     ;; project navigation
     projectile
     helm-projectile
-    
+    helm-cider
     ;; colorful parenthesis matching
     rainbow-delimiters
 
@@ -80,8 +89,7 @@
 
     ;; autocomplete
     auto-complete
-    ac-nrepl
-    ))
+    ac-cider))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -145,6 +153,8 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-css.el")
+(load "setup-terraform.el")
+;;(load "setup-pio.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -153,7 +163,11 @@
  '(coffee-tab-width 2)
  '(custom-safe-themes
    (quote
-    ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "68f7a53f5f1a8d30e5cd2d119fe6ecddb081bfe61bc427ca20eefd0abfada488" default))))
+    ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "68f7a53f5f1a8d30e5cd2d119fe6ecddb081bfe61bc427ca20eefd0abfada488" default)))
+ '(package-selected-packages
+   (quote
+    (helm-cider yaml-mode web-mode terraform-mode tagedit smex rainbow-delimiters platformio-mode paredit magit less-css-mode jsx-mode json-mode js2-refactor ido-ubiquitous helm-projectile flymake-json dockerfile-mode clojure-mode-extra-font-locking aggressive-indent ac-nrepl)))
+ '(terraform-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

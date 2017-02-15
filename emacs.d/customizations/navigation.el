@@ -20,9 +20,9 @@
 (setq recentf-max-menu-items 40)
 
 ;;helm mde uses fuzzy search to navigate choices.
+(require 'helm)
 (require 'helm-config)
-;;(require 'helm)
-(helm-mode 1)
+
 (setq helm-candidate-number-limit 100) ;; From https://gist.github.com/antifuchs/9238468
 (setq helm-idle-delay 0.0              ; update fast sources immediately (doesn't).
       helm-input-idle-delay 0.01       ; this actually updates thing reeeelatively quickly.
@@ -33,6 +33,11 @@
 
 
 (global-set-key (kbd "C-c h") 'helm-mini)
+(global-unset-key (kbd "C-x c"))
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
@@ -45,12 +50,8 @@
 (global-set-key (kbd "C-x c b") 'my/helm-do-grep-book-notes)
 (global-set-key (kbd "C-x c SPC") 'helm-all-mark-rings)
 
-;; Enhances M-x to allow easier execution of commands. Provides
-;; a filterable list of possible commands in the minibuffer
-;; http://www.emacswiki.org/emacs/Smex
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
+(helm-mode 1)
+
 
 ;; projectile everywhere!
 (require 'helm-projectile)
@@ -64,6 +65,8 @@
 (setq projectile-switch-project-action 'helm-projectile-find-file)
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-completion-system 'helm)
+
+
 ;; move-text
 ;(require 'move-text)
 ;(global-set-key [M-up] 'move-text-up)
@@ -76,6 +79,7 @@
 (global-set-key (kbd "C-=") #'hs-toggle-hiding)
 (global-set-key (kbd "C-+") #'hs-show-all)
 (global-set-key (kbd "C-_") #'hs-hide-all)
-
-        (define-key map (kbd "C-c @ S")	  'hs-show-all)
-        (define-key map (kbd "C-c @ l")   'hs-hide-level)
+(global-set-key (kbd "C-<home>") 'beginning-of-buffer)
+(global-set-key (kbd "C-<end>") 'end-of-buffer)
+(global-set-key (kbd "C-<select>") 'end-of-buffer)
+(global-set-key (kbd "<clearline>") 'end-of-buffer)

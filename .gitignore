@@ -8,3 +8,4 @@ ranger/history
 ranger/bookmarks
 
 emacs.d/*.dat
+emacs.d/elpa

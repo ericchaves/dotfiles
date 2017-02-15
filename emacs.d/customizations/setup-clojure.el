@@ -60,6 +60,19 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
 
+;; Cider auto complete
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(progn
+     (add-to-list 'ac-modes 'cider-mode)
+     (add-to-list 'ac-modes 'cider-repl-mode)))
+
+;; Helm-cider
+(require 'helm-cider)
+(add-hook 'cider-mode-hook (lambda () (helm-cider-mode)))
 
 ;; key bindings
 ;; these help me out with the way I usually develop web apps
@@ -86,3 +99,7 @@
      (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
+
+(defun cider-cljs-lein-repl
+  (interactive)
+  (do (use figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl)))

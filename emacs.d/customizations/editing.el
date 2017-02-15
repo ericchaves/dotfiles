@@ -72,3 +72,6 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
+
+(global-set-key (kbd "C-?") 'comment-or-uncomment-region)
+
