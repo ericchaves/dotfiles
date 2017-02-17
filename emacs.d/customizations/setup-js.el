@@ -30,7 +30,10 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jade\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+;;set custom color for brackets in web-mode
+(set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "White")
+(add-hook 'web-mode-hook 'rainbow-delimiters-mode)
 
 (require 'cloudformation-mode)
 (add-to-list 'auto-mode-alist '("\\.cfn\\'" . cloudformation-mode))

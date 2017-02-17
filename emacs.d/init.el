@@ -1,3 +1,5 @@
+;;; unset global C-z to prevent buggy suspend
+(global-unset-key (kbd "C-z"))
 ;;;;
 ;; Packages
 ;;;;
@@ -106,7 +108,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/home/eric/bin")
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
 ;;
@@ -155,6 +158,9 @@
 (load "setup-css.el")
 (load "setup-terraform.el")
 ;;(load "setup-pio.el")
+
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/home/eric/bin")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,7 +169,7 @@
  '(coffee-tab-width 2)
  '(custom-safe-themes
    (quote
-    ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "68f7a53f5f1a8d30e5cd2d119fe6ecddb081bfe61bc427ca20eefd0abfada488" default)))
+    ("1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" "52588047a0fe3727e3cd8a90e76d7f078c9bd62c0b246324e557dfa5112e0d0c" "03ea866815fe82c4736611acafef3c90519d15cd3d465d8f146ebfa3a293b663" "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "68f7a53f5f1a8d30e5cd2d119fe6ecddb081bfe61bc427ca20eefd0abfada488" default)))
  '(package-selected-packages
    (quote
     (helm-cider yaml-mode web-mode terraform-mode tagedit smex rainbow-delimiters platformio-mode paredit magit less-css-mode jsx-mode json-mode js2-refactor ido-ubiquitous helm-projectile flymake-json dockerfile-mode clojure-mode-extra-font-locking aggressive-indent ac-nrepl)))

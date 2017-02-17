@@ -49,7 +49,7 @@
 (global-set-key (kbd "C-x c Y") 'helm-yas-create-snippet-on-region)
 (global-set-key (kbd "C-x c b") 'my/helm-do-grep-book-notes)
 (global-set-key (kbd "C-x c SPC") 'helm-all-mark-rings)
-
+(global-set-key (kbd "C-z") 'undo)
 (helm-mode 1)
 
 

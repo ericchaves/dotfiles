@@ -22,7 +22,6 @@
 (setq inhibit-startup-message t)
 
 ;; remap common keys
-(global-set-key (kbd "C-z") 'undo)
 ;; General Auto-Complete
 (require 'auto-complete-config)
 (setq ac-delay 0.0)

@@ -34,7 +34,7 @@
 ;;;;
 
 ;; provides minibuffer documentation for the code you're typing into the repl
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 
 ;; go right to the REPL buffer when it's finished connecting
 (setq cider-repl-pop-to-buffer-on-connect t)
@@ -48,6 +48,10 @@
 
 ;; Wrap when navigating history.
 (setq cider-repl-wrap-history t)
+
+;; enable cide-jack-in-cloujurescript
+(setq cider-cljs-lein-repl
+      "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl)")
 
 ;; enable paredit in your REPL
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
@@ -100,6 +104,4 @@
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
-(defun cider-cljs-lein-repl
-  (interactive)
-  (do (use figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl)))
+
